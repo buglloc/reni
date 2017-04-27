@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+{% block head %}
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Regex Ninja</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/favicon-32x32.png')|autoversion }}" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='icons/favicon-16x16.png')|autoversion }}" sizes="16x16">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='icons/favicon.ico')|autoversion }}">
+  <script type="text/javascript" src="https://yastatic.net/jquery/2.2.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://yastatic.net/underscore/1.8.3/underscore-min.js"></script>
+  <script type="text/javascript" src="https://yastatic.net/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='jquery.ba-throttle-debounce.js')|autoversion }}"></script>
+  <link rel="stylesheet" href="https://yastatic.net/bootstrap/3.3.6/css/bootstrap.min.css" />
+{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://github.com/buglloc/reni" target="_blank">
+        Regex Ninja - regular expression solver.
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+{% block body %}{% endblock %}
+</div>
+</body>
+</html>

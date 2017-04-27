@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='index.css')|autoversion }}">
+  <script type="text/javascript" src="{{ url_for('static', filename='index.js')|autoversion }}"></script>
+{% endblock %}
+
+{% block body %}
+<div class="row well well-sm" style="padding-bottom: 18px">
+  <div class="col-md-10">
+    <label>Regex</label>
+    <input id="regex" type="text" class="form-control" aria-label="regex" value="{{ regex }}" autofocus="true" placeholder="https?://yandex\.(?:ru|com)/">
+  </div>
+  <div class="col-sm-2">
+    <label>Dangerous</label>
+    <input id="danger" class="form-control" value="{{ danger }}" type="text" maxlength="1" size="1">
+  </div>
+</div>
+
+<div class="row well well-sm">
+<div class="col-md-12" id="results">
+Please write your regex and feel the power of magic 😎
+</div>
+</div>
+
+<div class="row well well-sm">
+<div class="col-md-12">
+  <strong>Cheat Sheet</strong>
+  <br />
+  <table style="width:100%">
+  <tr>
+    <td>
+    <table>
+      <tbody>
+      <tr>
+        <td><code>.</code></td>
+        <td>Any single character</td>
+      </tr>
+      <tr>
+        <td><code>[abc]</code></td>
+        <td>A single character of: a, b or c</td>
+      </tr>
+      <tr>
+        <td><code>[^abc]</code></td>
+        <td>Any single character except: a, b, or c</td>
+      </tr>
+      <tr>
+        <td><code>[a-z]</code></td>
+        <td>Any single character in the range a-z</td>
+      </tr>
+      <tr>
+        <td><code>[a-zA-Z]</code></td>
+        <td>Any single character in the range a-z or A-Z</td>
+      </tr>
+      <tr>
+        <td><code>^</code></td>
+        <td>Start of line</td>
+      </tr>
+      <tr>
+        <td><code>$</code></td>
+        <td>End of line</td>
+      </tr>
+      </tbody>
+    </table>
+    </td>
+    <td>
+    <table>
+      <tbody>
+      <tr>
+        <td><code>\x</code></td>
+        <td>Hexadecimal digit</td>
+      </tr>
+      <tr>
+        <td><code>\s</code></td>
+        <td>Any whitespace character</td>
+      </tr>
+      <tr>
+        <td><code>\S</code></td>
+        <td>Any non-whitespace character</td>
+      </tr>
+      <tr>
+        <td><code>\d</code></td>
+        <td>Any digit</td>
+      </tr>
+      <tr>
+        <td><code>\D</code></td>
+        <td>Any non-digit</td>
+      </tr>
+      <tr>
+        <td><code>\w</code></td>
+        <td>Any word character (letter, number, underscore)</td>
+      </tr>
+      <tr>
+        <td><code>\W</code></td>
+        <td>Any non-word character</td>
+      </tr>
+      </tbody>
+    </table>
+    </td>
+    <td>
+    <table>
+    <tbody>
+      <tr>
+      <td><code>(a|b)</code></td>
+      <td>a or b</td>
+      </tr>
+      <tr>
+      <td><code>a?</code></td>
+      <td>Zero or one of a</td>
+      </tr>
+      <tr>
+      <td><code>a*</code></td>
+      <td>Zero or more of a</td>
+      </tr>
+      <tr>
+      <td><code>a+</code></td>
+      <td>One or more of a</td>
+      </tr>
+      <tr>
+      <td><code>a{3}</code></td>
+      <td>Exactly 3 of a</td>
+      </tr>
+      <tr>
+      <td><code>a{3,}</code></td>
+      <td>3 or more of a</td>
+      </tr>
+      <tr>
+      <td><code>a{3,6}</code></td>
+      <td>Between 3 and 6 of a</td>
+      </tr>
+    </tbody>
+    </table>
+  </td>
+  </table>
+</div>
+</div>
+
+<script type="text/template" id="result-template">
+<label>Possible values</label>
+<ul class="list-group">
+   <% for (let value of values) { %>
+     <li class="list-group-item"><%- value %></li>
+   <% } %>
+</ul>
+<blockquote><small>
+  <div><code>^</code> - value must start with these characters</div>
+  <div><code>$</code> - value must end with these characters</div>
+</small></blockquote>
+</script>
+
+<script type="text/template" id="problem-template">
+<div class="alert alert-danger" role="alert">
+  <strong>Shit happens</strong>&nbsp;<%- message %>
+</div>
+</script>
+{% endblock %}

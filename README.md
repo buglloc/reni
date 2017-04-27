@@ -1,2 +1,2 @@
-# reni
-A simple regular expression solver.
+# regex-ninja
+Regex Ninja - simple regular expression solver.

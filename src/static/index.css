@@ -1,0 +1,27 @@
+body {
+    background: #333;
+}
+
+input, textarea {
+    font-family: monospace;
+}
+
+.navbar {
+    background: #2c3e50;
+    border-color: #545353;
+    border-width: 0px;
+    border-bottom-width: 4px;
+}
+
+.navbar-brand , .navbar-brand > a:hover, .navbar-brand > a:focus {
+    color: #f0f0f0 !important;
+}
+
+code {
+    color: #4F5B93;
+    background-color: #FFF;
+}
+
+blockquote .small:before, blockquote footer:before, blockquote small:before {
+    content: '';
+}
