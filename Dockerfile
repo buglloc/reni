@@ -3,7 +3,7 @@ MAINTAINER Andrew Krasichkov "buglloc@yandex-team.ru"
 
 ENV DEBIAN_FRONTEND noninteractive
 COPY src/requirements.pip /requirements.pip
-RUN pip install --no-cache-dir -i https://pypi.yandex-team.ru/simple/ -r requirements.pip
+RUN pip install --no-cache-dir -r requirements.pip
 
 ADD src /app
 WORKDIR /app
