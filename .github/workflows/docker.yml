@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - master
     tags:
       - 'v*.*.*'
 
@@ -16,7 +16,7 @@ permissions:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build-dns-gateway:
+  build-docker:
     runs-on: ubuntu-latest
     steps:
       # Get the repositery's code
